@@ -20,7 +20,9 @@ from . import views
 
 urlpatterns = [
 
+
     url(r'^profile',views.profile,name="profile"),
+    url(r'^signup',views.signup,name="signup"),
     url(r'^home',views.home,name="home"),
      url(r'',views.index,name="index"),
 ]
