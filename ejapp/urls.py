@@ -20,8 +20,7 @@ from . import views
 
 urlpatterns = [
 
-    url(r'',views.index,name="index"),
-    url(r'^profile',views.profile,name="profile")
-    url(r'^home',views.home,name="home")
-
+    url(r'^profile',views.profile,name="profile"),
+    url(r'^home',views.home,name="home"),
+     url(r'',views.index,name="index"),
 ]
