@@ -1,0 +1,380 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="static/css/eJudis.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="static/js/jQuery.3.3.1.js"></script>
+        
+        
+        <style>
+           
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #C21616;color: white">
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon" style="color: white"></span>
+              </button>
+              <a class="navbar-brand" href="#" style="color: white;font-family:cursive;text-shadow: 5px 5px 14px white">e-Judiciary</a>
+
+              <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="../template/home.html" style="color: white">Home <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../template/profile.html" style="color: white">Profile</a>
+                  </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="../index.html" style="color: white">Feeds</a>
+                  </li>
+                  
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                        <li class="nav-item ">
+                            <a class="nav-link" href="#" style="color: white"><i class="fas fa-map-marker-alt"></i>&nbsp; Khurdha,Odisha</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="#" style="color: white" data-toggle="modal" data-target="#auth">LogIn</a>
+                        </li>
+                    </ul>
+                </form>
+              </div>
+            </nav>
+            
+<!--            Modal Data-->
+            <div class="modal fade" id="auth" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="background-color: transparent">
+              <div class="modal-dialog" role="document"style="background-color: transparent;border: none">
+                <div class="modal-content"style="background-color: transparent;border: none">
+                  
+                  <div class="modal-body"style="background-color: transparent;border: none;">
+                    <div class="container_log">
+                        <div class="backbox">
+                          <div class="loginMsg">
+                            <div class="textcontent">
+                              <p class="title">Don't have an account?</p>
+                              <p>Sign up to save all your graph.</p>
+                              <button id="switch1">Sign Up</button>
+                            </div>
+                          </div>
+                          <div class="signupMsg visibility">
+                            <div class="textcontent">
+                              <p class="title">Have an account?</p>
+                              <p>Log in to see all your collection.</p>
+                              <button id="switch2">LOG IN</button>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- backbox -->
+
+                        <div class="frontbox">
+                          <div class="login">
+                            <h2>LOG IN</h2>
+                            <div class="inputbox">
+                              <input type="text" name="email" placeholder="  EMAIL">
+                              <input type="password" name="password" placeholder="  PASSWORD">
+                            </div>
+                            <p>FORGET PASSWORD?</p>
+                            <button>LOG IN</button>
+                          </div>
+
+                          <div class="signup hide">
+                            <h2>SIGN UP</h2>
+                            <div class="inputbox">
+                              <input type="text" name="fullname" placeholder="  FULLNAME">
+                              <input type="text" name="email" placeholder="  EMAIL">
+                              <input type="password" name="password" placeholder="  PASSWORD">
+                              <input type="number" name="adhar" placeholder="  ADHAR NUMBER">
+                                <input type="number" name="phone" placeholder="  PHONE NUMBER">
+                                <input type="text" name="address" placeholder="  ADDRESS ">
+                            </div>
+                            <button>SIGN UP</button>
+                          </div>
+
+                        </div>
+                        <!-- frontbox -->
+                      </div>
+                  </div>
+                  <div class="modal-footer"style="background-color: transparent">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">X</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </header>
+       
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="z-index: 4;">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://images.indianexpress.com/2016/12/calcutta-high-court759.jpg" class="d-block w-100" alt="..."style="width: 100%;height: 350px;object-fit:fill;object-position:top;">
+              
+            </div>
+            <div class="carousel-item">
+              <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/201608/high-court-story_647_080116080014.jpg" alt="..." style="width: 100%;height: 350px;object-fit: fill;object-position: center;">
+            </div>
+            <div class="carousel-item">
+              <img src="https://timesofindia.indiatimes.com/thumb/msid-63457249,imgsize-55776,width-400,resizemode-4/63457249.jpg" class="d-block w-100" alt="..."style="width: 100%;height: 350px;object-fit: fill;object-position: center;">
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row" style="border-radius: 5px;padding: 1%;padding-top: 3%">
+                
+                <div class="col-sm-12 col-md-6 col-lg-6">
+                    <i class="far fa-newspaper fa-2x" style="color: #c21616"></i><span style="font-size: 1.8em;font-family: cursive">&nbsp; Feeds</span><hr/>
+                </div>
+                
+                <div class="col-sm-12 col-md-6 col-lg-6">
+                    <center>
+                        <form >
+                            &nbsp; &nbsp; <i class="fas fa-search fa-2x" style="color: #c21616"></i>&nbsp; &nbsp; &nbsp; <input type="text" style="width: 40%;font-size: 20px;padding: 5px;font-family: cursive;padding-left: 10px;padding-right: 10px;border:none;background-color:white" placeholder="Search..."><button style="background-color: #c21616;border: none;padding: 10px;padding-left: 15px;padding-right: 15px; border-radius: 50px;color: white;font-family: cursive;">Search</button>
+                        </form>
+                    </center>
+                    <hr/>
+                </div>
+                
+                <div class="col-sm-12 col-md-4 col-lg-4" >
+                    
+                    <div class="card card--big">
+                      <div class="card__image" style="background-image: url(https://akm-img-a-in.tosshub.com/indiatoday/images/story/201902/1539241713_vijay-mallya.jpeg?l9KpQWdEuOXzbF8U15cUeIPOnh45E1GY);"></div>
+                      <h2 class="card__title">Vijay Mallya case took a turn.</h2>
+                      <p class="card__text">In a series of tweets,Mallya said that he had made an offer to settle before the Karnataka High Court</p>
+                      <div class="card__action-bar">
+                        <button class="card__button">SUSCRIBE</button>
+                        <button class="card__button">LEARN MORE</button>
+                      </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-12 col-md-4 col-lg-4" >
+                    
+                    <div class="card card--big">
+                      <div class="card__image" style="background-image: url(https://resize.indiatvnews.com/en/centered/newbucket/715_431/2019/02/sudipta-sen-505-080114094537-0-1550028312.jpg);"></div>
+                      <h2 class="card__title">Sarada Chit Fund Case.</h2>
+                      <p class="card__text">CBI likely to move Supreme Court seeking permission to grill Sudipta Sen,aide M. Debjani </p>
+                      <div class="card__action-bar">
+                        <button class="card__button">SUSCRIBE</button>
+                        <button class="card__button">LEARN MORE</button>
+                      </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-12 col-md-4 col-lg-4" >
+                    
+                    <div class="card card--big">
+                      <div class="card__image" style="background-image: url(https://s3.india.com/wp-content/uploads/2017/05/nirbhaya-5.jpg);"></div>
+                      <h2 class="card__title">2012 Delhi gang rape</h2>
+                      <p class="card__text">The Government of Karnataka announced the launch of a 24/7 dedicated helpline (1091).</p>
+                      <div class="card__action-bar">
+                        <button class="card__button">SUSCRIBE</button>
+                        <button class="card__button">LEARN MORE</button>
+                      </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-12 col-md-4 col-lg-4" >
+                    
+                    <div class="card card--big">
+                      <div class="card__image" style="background-image: url(https://s3.india.com/wp-content/uploads/2017/05/nirbhaya-5.jpg);"></div>
+                      <h2 class="card__title">2012 Delhi gang rape</h2>
+                      <p class="card__text">The Government of Karnataka announced the launch of a 24/7 dedicated helpline (1091).</p>
+                      <div class="card__action-bar">
+                        <button class="card__button">SUSCRIBE</button>
+                        <button class="card__button">LEARN MORE</button>
+                      </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-12 col-md-4 col-lg-4" >
+                    
+                    <div class="card card--big">
+                      <div class="card__image" style="background-image: url(https://akm-img-a-in.tosshub.com/indiatoday/images/story/201902/1539241713_vijay-mallya.jpeg?l9KpQWdEuOXzbF8U15cUeIPOnh45E1GY);"></div>
+                      <h2 class="card__title">Vijay Mallya case took a turn.</h2>
+                      <p class="card__text">In a series of tweets,Mallya said that he had made an offer to settle before the Karnataka High Court</p>
+                      <div class="card__action-bar">
+                        <button class="card__button">SUSCRIBE</button>
+                        <button class="card__button">LEARN MORE</button>
+                      </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-12 col-md-4 col-lg-4" >
+                    
+                    <div class="card card--big">
+                      <div class="card__image" style="background-image: url(https://resize.indiatvnews.com/en/centered/newbucket/715_431/2019/02/sudipta-sen-505-080114094537-0-1550028312.jpg);"></div>
+                      <h2 class="card__title">Sarada Chit Fund Case.</h2>
+                      <p class="card__text">CBI likely to move Supreme Court seeking permission to grill Sudipta Sen,aide M. Debjani </p>
+                      <div class="card__action-bar">
+                        <button class="card__button">SUSCRIBE</button>
+                        <button class="card__button">LEARN MORE</button>
+                      </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-12 col-md-4 col-lg-4" >
+                    
+                    <div class="card card--big">
+                      <div class="card__image" style="background-image: url(https://akm-img-a-in.tosshub.com/indiatoday/images/story/201902/1539241713_vijay-mallya.jpeg?l9KpQWdEuOXzbF8U15cUeIPOnh45E1GY);"></div>
+                      <h2 class="card__title">Vijay Mallya case took a turn.</h2>
+                      <p class="card__text">In a series of tweets,Mallya said that he had made an offer to settle before the Karnataka High Court</p>
+                      <div class="card__action-bar">
+                        <button class="card__button">SUSCRIBE</button>
+                        <button class="card__button">LEARN MORE</button>
+                      </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-12 col-md-4 col-lg-4" >
+                    
+                    <div class="card card--big">
+                      <div class="card__image" style="background-image: url(https://resize.indiatvnews.com/en/centered/newbucket/715_431/2019/02/sudipta-sen-505-080114094537-0-1550028312.jpg);"></div>
+                      <h2 class="card__title">Sarada Chit Fund Case.</h2>
+                      <p class="card__text">CBI likely to move Supreme Court seeking permission to grill Sudipta Sen,aide M. Debjani </p>
+                      <div class="card__action-bar">
+                        <button class="card__button">SUSCRIBE</button>
+                        <button class="card__button">LEARN MORE</button>
+                      </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-12 col-md-4 col-lg-4" >
+                    
+                    <div class="card card--big">
+                      <div class="card__image" style="background-image: url(https://s3.india.com/wp-content/uploads/2017/05/nirbhaya-5.jpg);"></div>
+                      <h2 class="card__title">2012 Delhi gang rape</h2>
+                      <p class="card__text">The Government of Karnataka announced the launch of a 24/7 dedicated helpline (1091).</p>
+                      <div class="card__action-bar">
+                        <button class="card__button">SUSCRIBE</button>
+                        <button class="card__button">LEARN MORE</button>
+                      </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-12 col-md-4 col-lg-4" >
+                    
+                    <div class="card card--big">
+                      <div class="card__image" style="background-image: url(https://s3.india.com/wp-content/uploads/2017/05/nirbhaya-5.jpg);"></div>
+                      <h2 class="card__title">2012 Delhi gang rape</h2>
+                      <p class="card__text">The Government of Karnataka announced the launch of a 24/7 dedicated helpline (1091).</p>
+                      <div class="card__action-bar">
+                        <button class="card__button">SUSCRIBE</button>
+                        <button class="card__button">LEARN MORE</button>
+                      </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-12 col-md-4 col-lg-4" >
+                    
+                    <div class="card card--big">
+                      <div class="card__image" style="background-image: url(https://akm-img-a-in.tosshub.com/indiatoday/images/story/201902/1539241713_vijay-mallya.jpeg?l9KpQWdEuOXzbF8U15cUeIPOnh45E1GY);"></div>
+                      <h2 class="card__title">Vijay Mallya case took a turn.</h2>
+                      <p class="card__text">In a series of tweets,Mallya said that he had made an offer to settle before the Karnataka High Court</p>
+                      <div class="card__action-bar">
+                        <button class="card__button">SUSCRIBE</button>
+                        <button class="card__button">LEARN MORE</button>
+                      </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-12 col-md-4 col-lg-4" >
+                    
+                    <div class="card card--big">
+                      <div class="card__image" style="background-image: url(https://resize.indiatvnews.com/en/centered/newbucket/715_431/2019/02/sudipta-sen-505-080114094537-0-1550028312.jpg);"></div>
+                      <h2 class="card__title">Sarada Chit Fund Case.</h2>
+                      <p class="card__text">CBI likely to move Supreme Court seeking permission to grill Sudipta Sen,aide M. Debjani </p>
+                      <div class="card__action-bar">
+                        <button class="card__button">SUSCRIBE</button>
+                        <button class="card__button">LEARN MORE</button>
+                      </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <br/><a href="#" style="color: #C21616;float: right;font-family: cursive;text-decoration: underline">click here for more...</a><br/><br/><br/>
+                </div>
+                
+            </div>
+            <div class="row" style="border-radius: 5px;padding: 1%;padding-top: 3%">
+                <img src="static/images/Screenshot%20(94).png" style="width: 100%;height: auto">
+            </div>
+        </div>
+                    
+        <footer>
+          <div class="copyright">
+            <p>&copy 2018 - CaveMenDev</p>
+          </div>
+          <div class="social">
+            <a href="#" class="support">Contact Us</a>
+            <a href="#" class="face">f</a>
+            <a href="#" class="tweet">t</a>
+            <a href="#" class="linked">in</a>
+          </div>
+        </footer>
+        
+    </body>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script>
+            var $loginMsg = $('.loginMsg'),
+                  $login = $('.login'),
+                  $signupMsg = $('.signupMsg'),
+                  $signup = $('.signup'),
+                  $frontbox = $('.frontbox');
+
+                $('#switch1').on('click', function() {
+                  $loginMsg.toggleClass("visibility");
+                  $frontbox.addClass("moving");
+                  $signupMsg.toggleClass("visibility");
+
+                  $signup.toggleClass('hide');
+                  $login.toggleClass('hide');
+                })
+
+                $('#switch2').on('click', function() {
+                  $loginMsg.toggleClass("visibility");
+                  $frontbox.removeClass("moving");
+                  $signupMsg.toggleClass("visibility");
+
+                  $signup.toggleClass('hide');
+                  $login.toggleClass('hide');
+                })
+
+                setTimeout(function(){
+                  $('#switch1').click()
+                },1000)
+
+                setTimeout(function(){
+                  $('#switch2').click()
+                },3000)
+        </script>
+</html>
+
+<!--
+<center>
+    <div >
+        <form>
+            <input type="text" style="width: 60%;font-size: 20px;padding: 5px;font-family: cursive;padding-left: 20px;padding-right: 10px;border:solid #c21616;box-shadow:1px 1px 100px 10px grey;border-radius: 50px" placeholder="Search..."><button style="width: 80px;height: 80px;border: solid #c21616;border-radius: 100px;margin-left: -50px;background-color: white"><i class="fas fa-search fa-2x" style="color: #c21616"></i></button>
+        </form>
+    </div>
+</center>-->
