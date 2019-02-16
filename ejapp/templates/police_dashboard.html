@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="../static/css/eJudis.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+        <script src="../static/js/jQuery.3.3.1.js"></script>
+        
+        <style>
+            
+        </style>
+    
+    
+</head>
+<body style="background-color: whitesmoke">
+<header>
+            <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #C21616;color: white">
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon" style="color: white"></span>
+              </button>
+              <a class="navbar-brand" href="#" style="color: white;font-family:cursive;text-shadow: 5px 5px 14px white">e-Judiciary</a>
+
+              <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="../template/home.html" style="color: white">Home <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../template/profile.html" style="color: white">Profile</a>
+                  </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="../index.html" style="color: white">Feeds</a>
+                  </li>
+
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                        <li class="nav-item ">
+                            <a class="nav-link" href="#" style="color: white"><i class="fas fa-map-marker-alt"></i>&nbsp; Khurdha,Odisha</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{% url 'logout' %}" style="color: white" >Log In</a>
+                        </li>
+                    </ul>
+                </form>
+              </div>
+            </nav>
+
+
+        </header>
+          
+    <div class="container" style="box-shadow: 2px 2px 8000px darkgrey">
+        <div class="row" style="background-color: white;margin-top: 1%;padding: 1%">
+            <div class="col-sm-2 col-md-2 col-lg-2" style="background: white">
+                <a href="#fir_track"><div style="width: 150px;height: 150px;background-color:#c21616;box-shadow: 2px 2px 20px darkgrey;border-radius: 5px" data-target="#fir_track">
+                    <center>
+                        <i class="fas fa-chart-line fa-4x" style="color: white;margin-top: 30px"></i><br/><span style="color: white"><b>F.I.R Tracking</b></span>
+                    </center>
+                    </div></a>
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2" >
+                <a href="#fir_manage"><div style="width: 150px;height: 150px;background-color:#c21616;box-shadow: 2px 2px 20px darkgrey;border-radius: 5px"data-target="#fir_manage_mod">
+                    <center>
+                        <i class="fas fa-tasks fa-4x" style="color: white;margin-top: 30px"></i><br/><span style="color: white"><b>Manage F.I.R</b></span>
+                    </center>
+                </div></a>
+            </div>
+        </div>
+        
+        
+        
+                    <!--FIR tracking -->
+        <div class="row" style="background-color: white;padding: 1%" id="fir_track">
+            <div class="col-sm-12 col-md-12 col-lg-12" style="background: whitesmoke;color: gray;font-size: 25px;border-radius: 20px;margin-bottom: 20px">
+                F.I.R Tracking
+            </div>
+            
+            
+            <div class="col-sm-2 col-md-2 col-lg-2" style="background: white;padding: 1%"data-toggle="modal" data-target="#fir_det">
+                
+                <div style="border: solid 0.5px grey;width: 100%;height: 100px;">
+                        <!--FIR Subject-->
+                    
+                    <img src="../static/images/backgrounds-gradient-red-red-background-844915-1920x1080.png" style="width: 100%;height: 100px;object-fit: fill;object-position: center">
+                </div>
+                <div style="width: 100%;height: 50px;padding: 10px;background-color: whitesmoke;color: grey;border: solid 0.5px grey;cursor: pointer" data-target="">
+                    <center>View</center>
+                </div>
+            </div>
+            
+            
+            
+            <div class="modal fade" id="fir_det" tabindex="-1" role="dialog" aria-labelledby="fir_det" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="fir_det">F.I.R No</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                      <div style="display: block">
+                        <h2>Subject Of the F.I.R</h2><hr/>
+                        <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                          It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                          It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</span>  
+                      </div>
+                      
+                    <img src="../static/images/backgrounds-gradient-red-red-background-844915-1920x1080.png" style="width: 100%;height: auto;object-fit: fill;object-position: center;display: none">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Accept</button>
+                      <button type="button" class="btn btn-primary"data-toggle="modal" data-target="#reson_reject" style="background-color: #c21616"data-dismiss="modal">Reject</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal fade" id="reson_reject" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Reason of Rejection.</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <textarea style="width: 100%;height: 300px;overflow: auto;border: none;border-radius: 10px;padding: 1%;background-color: whitesmoke" placeholder="Describe reason of rejection"></textarea>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" style="background-color: #c21616">Reject</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-sm-2 col-md-2 col-lg-2" >
+                    
+            </div>
+            
+            <hr/><br/>
+        </div>
+        
+                    <!--Manage F.I.R-->
+        <div class="row" style="background-color: white;padding: 1%" id="fir_manage">
+            <div class="col-sm-12 col-md-12 col-lg-12" style="background: whitesmoke;color: gray;font-size: 25px;border-radius: 20px;margin-bottom: 20px">
+                Manage F.I.R
+            </div>
+            
+            
+            <div class="col-sm-2 col-md-2 col-lg-2" style="background: white;padding: 1%"data-toggle="modal" data-target="#fir_manage_mod">
+                
+                <div style="border: solid 0.5px grey;width: 100%;height: 100px;">
+                        <!--FIR Subject--><!-- DOCUMENT TYPE -->
+                    <div style="padding: 15px;color: white;background-color: #c21616;height: 100%;display: none"><b>Vijay Malya case Took a turn</b></div>
+                            <!-- IMAGE TYPE -->
+                    <img src="../static/images/backgrounds-gradient-red-red-background-844915-1920x1080.png" style="width: 100%;height: 100px;object-fit: fill;object-position: center;display: block">
+                </div>
+                <div style="width: 100%;height: 50px;padding: 10px;background-color: whitesmoke;color: grey;border: solid 0.5px grey;cursor: pointer" data-target="">
+                    <center>View</center>
+                </div>
+            </div>
+            
+            
+            
+            <div class="modal fade" id="fir_manage_mod" tabindex="-1" role="dialog" aria-labelledby="fir_det" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="fir_det">F.I.R No</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                      <div style="display: block">
+                        <h2>Subject Of the F.I.R</h2><hr/>
+                        <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                          It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                          It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</span>  
+                      </div>
+                      
+                    <img src="../static/images/backgrounds-gradient-red-red-background-844915-1920x1080.png" style="width: 100%;height: auto;object-fit: fill;object-position: center;display: none">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Done</button>
+                      <button type="button" class="btn btn-primary"data-toggle="modal" data-target="#upload_fir_docs" style="background-color: #c21616"data-dismiss="modal">Upload Documents</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal fade" id="upload_fir_docs" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Reason of Rejection.</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroupFileAddon01"style="background-color: #c21616;color: white">Upload Medical Report</span>
+                      </div>
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                      </div>
+                    </div>
+                      <textarea style="width: 100%;height: 300px;overflow: auto;border: none;border-radius: 10px;padding: 1%;padding-left: 2%; background-color: whitesmoke" placeholder="Seizure List......"></textarea>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" style="background-color: #c21616">Upload</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <hr/><br/>
+        </div>
+        
+    </div>
+    
+<footer >
+                  <div class="copyright">
+                    <p>&copy 2018 - CaveMenDev</p>
+</div>
+                  <div class="social">
+                    <a href="#" class="support">Contact Us</a>
+                    <a href="#" class="face">f</a>
+                    <a href="#" class="tweet">t</a>
+                    <a href="#" class="linked">in</a>
+                  </div>
+                </footer>
+</body>
+<script>
+                var $loginMsg = $('.loginMsg'),
+                      $login = $('.login'),
+                      $signupMsg = $('.signupMsg'),
+                      $signup = $('.signup'),
+                      $frontbox = $('.frontbox');
+
+                    $('#switch1').on('click', function() {
+                      $loginMsg.toggleClass("visibility");
+                      $frontbox.addClass("moving");
+                      $signupMsg.toggleClass("visibility");
+
+                      $signup.toggleClass('hide');
+                      $login.toggleClass('hide');
+                    })
+
+                    $('#switch2').on('click', function() {
+                      $loginMsg.toggleClass("visibility");
+                      $frontbox.removeClass("moving");
+                      $signupMsg.toggleClass("visibility");
+
+                      $signup.toggleClass('hide');
+                      $login.toggleClass('hide');
+                    })
+
+                    setTimeout(function(){
+                      $('#switch1').click()
+                    },1000)
+
+                    setTimeout(function(){
+                      $('#switch2').click()
+                    },3000)
+            </script>
+</html>
