@@ -77,3 +77,37 @@ def logout(request):
     auth.current_user = None
     authe.logout(request)
     return index(request)
+
+
+def police_home(request):
+
+    all_users=dict(db.child("users").child("users").get().val())
+    names = []
+    phones = []
+    users = []
+    case_nos = []
+    firnos = []
+    firsubjects = []
+    firdescriptions = []
+    firtimestamps = []
+    policestations = []
+    epochs = []
+    pid = "patia police station"
+    all_cases = dict(db.child("cases").get().val())
+    for case in all_cases:
+        if all_cases[case]["pid"] == pid:
+            uid = all_cases[case]["uid"]
+            users.append(uid)
+            names.append(all_users[uid]["name"])
+            phones.append(all_users[uid]["phone"])
+            case_nos.append(case)
+            firnos.append(all_users[uid]["cases"][case]["firno"])
+            firsubjects.append(all_users[uid]["cases"][case]["firsubject"])
+            firtimestamps.append(all_users[uid]["cases"][case]["firtimestamp"])
+            policestations.append(all_users[uid]["cases"][case]["policestation"])
+            firdescriptions.append(all_users[uid]["cases"][case]["firdescription"])
+            epochs.append(all_users[uid]["cases"][case]["epoch"])
+
+    context = zip(users,names,phones,case_nos,firnos,firsubjects,firtimestamps,policestations,firdescriptions,epochs)
+
+    return render(request,"temp.html",{"context":context})

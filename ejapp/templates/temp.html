@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% for users,names,phones,case_nos,firnos,firsubjects,firtimestamps,policestations,firdescriptions,epochs in context %}
+        {{users}} <br>
+        {{names}} <br>
+        {{phones}} <br>
+        {{case_nos}} <br>
+        {{firnos}} <br>
+        {{firsubjects}} <br>
+        {{firtimestamps}} <br>
+        {{policestations}} <br>
+        {{firdescriptions}} <br>
+        {{epochs}} <br>
+    {% endfor %}
+</body>
+</html>
