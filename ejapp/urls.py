@@ -20,7 +20,8 @@ from . import views
 
 urlpatterns = [
 
-
+    url(r'^advocate',views.advocate,name="advocate"),
+    url(r'^judge',views.judge,name="judge"),
     url(r'^filefir',views.filefir,name="filefir"),
     url(r'^profile',views.profile,name="profile"),
     url(r'^police',views.police_home,name="police"),
@@ -29,5 +30,5 @@ urlpatterns = [
     url(r'^login',views.login,name="login"),
     url(r'^home',views.home,name="home"),
     url(r'^auth-signup',views.auth_signup,name="auth_signup"),
-     url(r'',views.index,name="index"),
+    url(r'',views.index,name="index"),
 ]

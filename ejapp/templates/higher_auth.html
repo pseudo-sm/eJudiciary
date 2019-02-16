@@ -72,6 +72,8 @@
                 <div class="frontbox">
                   <div class="login">
                     <h2>Judge</h2>
+                      <form method="POST" action="{% url 'judge' %}">
+                          {% csrf_token %}
                     <div class="inputbox">
                       <input type="text" name="fullname" placeholder="  FULLNAME">
                       <input type="text" name="email" placeholder="  EMAIL">
@@ -79,55 +81,61 @@
                       <input type="number" name="aadhar" placeholder="  ADHAR NUMBER">
                         <input type="number" name="phone" placeholder="  PHONE NUMBER">
                         <div class="dropdown" style="background-color: #f2f2f2;margin-bottom: 20px;height: 35px;padding-top: 5px;cursor: grab">
-                          <span class="dropdown-toggle" type="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;background-color: #f2f2f2;border: solid #f2f2f2;margin-top: 30px;color: grey;">
+                          <select name="district" class="dropdown-toggle" type="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;background-color: #f2f2f2;border: solid #f2f2f2;margin-top: 30px;color: grey;">
                             District
-                          </span>
+
                           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Khordha</a>
+                            <option  class="dropdown-item" href="#">Khordha</option>
                           </div>
+                              </select>
                         </div>
                         <div class="dropdown" style="background-color: #f2f2f2;margin-bottom: 20px;height: 35px;padding-top: 5px;cursor: grab">
-                          <span class="dropdown-toggle" type="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;background-color: #f2f2f2;border: solid #f2f2f2;margin-top: 30px;color: grey;">
+                          <select name="court" class="dropdown-toggle" type="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;background-color: #f2f2f2;border: solid #f2f2f2;margin-top: 30px;color: grey;">
                             Court
-                          </span>
+
                           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Khordha District Court</a>
-                            <a class="dropdown-item" href="#">Khordha Consumer Court</a>
-                            <a class="dropdown-item" href="#">Bhubaneswar Court</a>
+                            <option class="dropdown-item" href="#">Khordha District Court</option>
+                            <option class="dropdown-item" href="#">Khordha Consumer Court</option>
+                            <option class="dropdown-item" href="#">Bhubaneswar Court</option>
                           </div>
+                              </select>
                         </div>
                     </div>
                     <button>SIGN UP</button>
+                      </form>
                   </div>
 
                   <div class="signup hide">
                     <h2>Advocate</h2>
-                      <form method="post" action="{% url 'signup' %}">
+                      <form method="post" action="{% url 'advocate' %}">
+                          {% csrf_token %}
                             <div class="inputbox">
                               <input type="text" name="fullname" placeholder="  FULLNAME">
                               <input type="text" name="email" placeholder="  EMAIL">
                               <input type="password" name="password" placeholder="  PASSWORD">
-                              <input type="text" name="aadhar" placeholder="  LICENSE NUMBER">
+                              <input type="text" name="license" placeholder="  LICENSE NUMBER">
                                 <input type="number" name="aadhar" placeholder="  ADHAR NUMBER">
                                 <input type="number" name="phone" placeholder="  PHONE NUMBER">
                                 <div class="dropdown" style="background-color: #f2f2f2;margin-bottom: 20px;height: 35px;padding-top: 5px;cursor: grab">
-                                  <span class="dropdown-toggle" type="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;background-color: #f2f2f2;border: solid #f2f2f2;margin-top: 30px;color: grey;">
+                                  <select name="category" class="dropdown-toggle" type="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;background-color: #f2f2f2;border: solid #f2f2f2;margin-top: 30px;color: grey;">
                                     Category
-                                  </span>
+
                                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="#">Criminal</a>
-                                    <a class="dropdown-item" href="#">Civil</a>
+                                    <option class="dropdown-item" href="#">Criminal</option>
+                                    <option class="dropdown-item" href="#">Civil</option>
                                   </div>
+                                  </select>
                                 </div>
                                 <div class="dropdown" style="background-color: #f2f2f2;margin-bottom: 20px;height: 35px;padding-top: 5px;cursor: grab">
-                                  <span class="dropdown-toggle" type="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;background-color: #f2f2f2;border: solid #f2f2f2;margin-top: 30px;color: grey;">
+                                  <select name="region" class="dropdown-toggle" type="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;background-color: #f2f2f2;border: solid #f2f2f2;margin-top: 30px;color: grey;">
                                     Region
-                                  </span>
+
                                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="#">Bhubanewar</a>
-                                    <a class="dropdown-item" href="#">Cuttack</a>
-                                    <a class="dropdown-item" href="#">Sambalpur</a>
+                                    <option class="dropdown-item" href="#">Bhubanewar</option>
+                                    <option class="dropdown-item" href="#">Cuttack</option>
+                                    <option class="dropdown-item" href="#">Sambalpur</option>
                                   </div>
+                                  </select>
                                 </div>
                             </div>
                         <button>SIGN UP</button>

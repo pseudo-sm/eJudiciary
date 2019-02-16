@@ -120,3 +120,32 @@ def filefir(request):
 def auth_signup(request):
 
     return render(request,"higher_auth.html")
+
+def advocate(request):
+    name = request.POST.get("fullname")
+    email = request.POST.get("email")
+    password = request.POST.get("password")
+    license = request.POST.get("license")
+    aadhar = request.POST.get("aadhar")
+    phone = request.POST.get("phone")
+    category = request.POST.get("category")
+    region = request.POST.get("region")
+    auth.create_user_with_email_and_password(email, password)
+    auth.sign_in_with_email_and_password(email, password)
+    uid = auth.current_user["localId"]
+    db.child("users").child("advocate").child(uid).update({"name":name,"email":email,"license":license,"aadhar":aadhar,"phone":phone,"category":category,"region":region})
+    return HttpResponse("Welcome to advocate's home.")
+
+def judge(request):
+    name = request.POST.get("fullname")
+    email = request.POST.get("email")
+    password = request.POST.get("password")
+    aadhar = request.POST.get("aadhar")
+    phone = request.POST.get("phone")
+    district = request.POST.get("district")
+    court = request.POST.get("court")
+    auth.create_user_with_email_and_password(email, password)
+    auth.sign_in_with_email_and_password(email, password)
+    uid = auth.current_user["localId"]
+    db.child("users").child("judge").child(uid).update({"name": name, "email": email,"aadhar": aadhar, "phone": phone, "district": district,"court": court})
+    return HttpResponse("Welcome to judge's home.")
