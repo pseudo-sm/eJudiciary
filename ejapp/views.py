@@ -268,15 +268,36 @@ def submit_action(request):
 def csi(request):
     auth.sign_in_with_email_and_password("csi@gmail.com","password")
     csid = auth.current_user["localId"]
-    uids = []
-    names = []
+    case_nos = []
+    case_subjects = []
+    case_descriptions = []
     all_users = dict(db.child("users").child("users").get().val())
     all_cases = dict(db.child("users").child("csi").child(csid).child("cases").get().val())
-    all_cases = list(all_cases.keys())
+    really_all_cases = dict(db.child("cases").get().val())
+    case_list = list(all_cases.keys())
     all_firs = db.child("firs").get().val()
-    for case in all_cases:
-        uid = all_firs[case]["uid"]
-        uids.append(uid)
-        names.append(all_users[uid]["name"])
+    for case in case_list:
+        uid = really_all_cases[case]["uid"]
+        case_nos.append(case)
+        case_subjects.append(all_users[uid]["cases"][case]["firsubject"])
+        case_descriptions.append(all_users[uid]["cases"][case]["firdescription"])
+    context = zip(case_nos,case_subjects,case_descriptions)
+    return render(request,"csi_dashboard.html",{"context":context})
 
-    return render(request,"csi.html")
+def chargesheet(request):
+
+    penal = request.GET.getlist('penal[]')
+    cid = request.GET.get('cid')
+    all_cases = dict(db.child("cases").child(cid).get().val())
+    uid = all_cases["uid"]
+    timestamp = int(datetime.timestamp(datetime.now()))
+    print(cid,uid)
+    for p in penal:
+        print(p)
+        if p is not '':
+            db.child('users').child("users").child(uid).child("cases").child(cid).child("chargesheet").update({p:0})
+    db.child('users').child("users").child(uid).child("cases").child(cid).update({"epoch":timestamp})
+    db.child('users').child("users").child(uid).child("cases").child(cid).child("events").update({timestamp:"chargesheet filed"})
+
+    all = True
+    return HttpResponse(json.dumps(all),content_type="json/application")

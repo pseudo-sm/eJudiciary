@@ -28,6 +28,7 @@ urlpatterns = [
     url(r'^profile',views.profile,name="profile"),
     url(r'^submit-action',views.submit_action,name="submit_action"),
     url(r'^police-manage',views.police_manage,name="police_manage"),
+    url(r'^chargesheet',views.chargesheet,name="chargesheet"),
     url(r'^police',views.police_home,name="police"),
     url(r'^logout',views.logout,name="logout"),
     url(r'^signup',views.signup,name="signup"),

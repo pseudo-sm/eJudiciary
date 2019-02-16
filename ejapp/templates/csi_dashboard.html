@@ -63,8 +63,8 @@
             <div class="col-sm-12 col-md-12 col-lg-12" style="background: whitesmoke;color: gray;font-size: 25px;border-radius: 20px;margin-bottom: 20px">
                 CSI DASHBOARD ...
             </div>
-            
-            <div class="col-sm-2 col-md-2 col-lg-2" style="background: white;padding: 1%"data-toggle="modal" data-target="#fir_det">
+            {% for case_nos,case_subjects,case_descriptions in context %}
+            <div class="col-sm-2 col-md-2 col-lg-2" style="background: white;padding: 1%"data-toggle="modal" data-target="#m{{case_nos}}">
                 
                 <div style="border: solid 0.5px grey;width: 100%;height: 100px;">
                         <!--FIR Subject-->
@@ -76,21 +76,19 @@
                 </div>
             </div>
             
-            <div class="modal fade" id="fir_det" tabindex="-1" role="dialog" aria-labelledby="fir_det" aria-hidden="true">
+            <div class="modal fade" id="m{{case_nos}}" tabindex="-1" role="dialog" aria-labelledby="fir_det" aria-hidden="true">
               <div class="modal-dialog modal-dialog-scrollable" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="fir_det">Case No</h5>
+                    <h5 class="modal-title" id="fir_det">{{case_nos}}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   <div class="modal-body">
                       <div style="display: block">
-                        <h2>Subject Of the CASE</h2><hr/>
-                        <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                          It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                          It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</span>  
+                        <h2>{{case_subjects}}</h2><hr/>
+                        <span>{{case_descriptions}}</span>
                       </div>
                       
                     <img src="../static/images/backgrounds-gradient-red-red-background-844915-1920x1080.png" style="width: 100%;height: auto;object-fit: fill;object-position: center;display: none">
@@ -98,13 +96,13 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary"data-toggle="modal" data-target="#sezu" >Seizure</button>
-                    <button type="button" class="btn btn-primary"data-toggle="modal" data-target="#med_rep" >Medical report</button>
-                    <button type="button" class="btn btn-primary"data-toggle="modal" data-target="#file_char" >File Charge-sheet</button>
+                    <button type="button" class="btn btn-primary"data-toggle="modal" data-target="#med_rep"  >Medical report</button>
+                    <button type="button" class="btn btn-primary"data-toggle="modal" data-target="#f{{case_nos}}" >File Charge-sheet</button>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="modal fade" id="sezu" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal fade" id="sezu" tabindex="-1" style="z-index:99"  role="dialog" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -165,7 +163,7 @@
                 </div>
               </div>
             </div>
-            <div class="modal fade" id="file_char" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal fade" id="f{{case_nos}}" tabindex="-1" role="dialog" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -174,18 +172,47 @@
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <div class="modal-body">
-                    <textarea style="width: 100%;height: 300px;overflow: auto;border: none;border-radius: 10px;padding: 1%;background-color: whitesmoke;font-family: cursive" placeholder="Chargesheet..."></textarea>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="float: right">Add More</button>
+                  <div class="modal-body extend">
+                    <input type="text" class="charge" placeholder="IPC Section">
+                    <button type="button" class="btn btn-secondary" id="addmore" style="float: right">Add More</button>
                   </div>
+
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" style="background-color: #c21616">Reject</button>
+                    <button type="button" class="btn btn-success chargesheet" style="background-color: #c21616">Submit</button>
                   </div>
                 </div>
               </div>
             </div>
-            
+            {% endfor %}
+            <script>
+                $('#addmore').click(function() {
+                    $('.extend').append('<br><input type="text" class="charge" placeholder="IPC Section">');
+                });
+                $('.chargesheet').click(function() {
+                    var penal = []
+                    var cid = $(this).parent().parent().parent().parent().attr('id')
+                    cid = cid.slice(1,7);
+                    $('.charge').each(function() {
+                        penal.push($(this).val());
+                    });
+                    console.log(penal);
+                    $.ajax({
+                       url: '/chargesheet/',
+                       data: {
+                          'penal':penal,
+                          'cid':cid
+                        },
+                        dataType: 'json',
+                        success: function (all) {
+                            console.log('cuss');
+
+                        }
+
+
+                        });
+                   });
+            </script>
         </div>
         
     </div>
