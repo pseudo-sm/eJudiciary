@@ -7,7 +7,7 @@ register = template.Library()
 @register.filter(name='change')
 def change(value, arg):
     """Removes all values of arg from the given string"""
-    date_time = datetime.fromtimestamp(int(value)/1000)
+    date_time = datetime.fromtimestamp(int(value))
     if arg == "date":
         ret = date_time.date()
     else:

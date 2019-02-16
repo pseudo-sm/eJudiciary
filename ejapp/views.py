@@ -141,7 +141,13 @@ def admin(request):
         uid=all_cases[key]["uid"]
         cases.update(all_users[uid]["cases"])
         events.append(all_users[uid]["cases"][key]["events"])
+    timelist = []
+    for event in events:
+        list1 = list(event.keys())
+        for case in list1:
+            print(case)
 
+    print(timelist)
     data = zip(cid,cname,cphone,cemail,caadhar,caddress,events)
     return render(request,"admin_temp.html",{"data":data})
 

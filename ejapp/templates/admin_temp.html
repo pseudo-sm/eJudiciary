@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load timestamp %}
     <meta charset="UTF-8">
     <title>TempAdmin</title>
 </head>
@@ -19,8 +20,9 @@
     </table>
     <br>
     <table border="1">
+        <tr><td>Case With</td><td>Date</td><td>Time</td></tr>
         {% for timestamp,event_name in events.items %}
-        <tr><td>{{event_name}}</td><td>{{timestamp}}</td></tr>
+        <tr><td>{{event_name}}</td><td>{{ timestamp | change:"time"}}</td><td>{{ timestamp | change:"date"}}</td></tr>
         {% endfor %}
     </table>
     <hr>
