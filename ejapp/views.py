@@ -116,3 +116,7 @@ def police_home(request):
 def filefir(request):
 
     firsubject = request.POST.get("firsubject")
+
+def auth_signup(request):
+
+    return render(request,"higher_auth.html")

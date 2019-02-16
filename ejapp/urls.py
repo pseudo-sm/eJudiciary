@@ -28,5 +28,6 @@ urlpatterns = [
     url(r'^signup',views.signup,name="signup"),
     url(r'^login',views.login,name="login"),
     url(r'^home',views.home,name="home"),
+    url(r'^auth-signup',views.auth_signup,name="auth_signup"),
      url(r'',views.index,name="index"),
 ]
