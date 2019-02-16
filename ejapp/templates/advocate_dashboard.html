@@ -1,25 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html>
+    <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="../static/css/eJudis.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-        <script src="../static/js/jQuery.3.3.1.js"></script>
-        
+        <script src="static/js/jQuery.3.3.1.js"></script>
+
+
         <style>
-            
+
         </style>
-    
-    
-</head>
-<body style="background-color: whitesmoke">
-<header>
+    </head>
+    <body>
+        <header>
             <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #C21616;color: white">
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon" style="color: white"></span>
@@ -45,37 +41,174 @@
                             <a class="nav-link" href="#" style="color: white"><i class="fas fa-map-marker-alt"></i>&nbsp; Khurdha,Odisha</a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="{% url 'logout' %}" style="color: white" >Log In</a>
+                            <a class="nav-link" href="#" style="color: white" data-toggle="modal" data-target="#auth">LogIn</a>
                         </li>
                     </ul>
                 </form>
               </div>
             </nav>
 
+<!--            Modal Data-->
+            <div class="modal fade" id="auth" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="background-color: transparent">
+              <div class="modal-dialog" role="document"style="background-color: transparent;border: none">
+                <div class="modal-content"style="background-color: transparent;border: none">
 
-        </header>
-          
-    <div class="container" style="box-shadow: 2px 2px 8000px darkgrey;margin-top: 2%">
-        
-       <div class="row">
-            <div class="col">
-                
-            </div>
-       </div>
-        
-    </div>
-    
-<footer >
-                  <div class="copyright">
-                    <p>&copy 2018 - CaveMenDev</p>
-</div>
-                  <div class="social">
-                    <a href="#" class="support">Contact Us</a>
-                    <a href="#" class="face">f</a>
-                    <a href="#" class="tweet">t</a>
-                    <a href="#" class="linked">in</a>
+                  <div class="modal-body"style="background-color: transparent;border: none;">
+                    <div class="container_log">
+                        <div class="backbox">
+                          <div class="loginMsg">
+                            <div class="textcontent">
+                              <p class="title">Don't have an account?</p>
+                              <p>Sign up to save all your graph.</p>
+                              <button id="switch1">Sign Up</button>
+                            </div>
+                          </div>
+                          <div class="signupMsg visibility">
+                            <div class="textcontent">
+                              <p class="title">Have an account?</p>
+                              <p>Log in to see all your collection.</p>
+                              <button id="switch2">LOG IN</button>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- backbox -->
+
+                        <div class="frontbox">
+                          <div class="login">
+                            <h2>LOG IN</h2>
+                              <form>
+                            <div class="inputbox">
+
+                              <input type="text" name="email" placeholder="  EMAIL">
+                              <input type="password" name="password" placeholder="  PASSWORD">
+                            </div>
+                            <p>FORGET PASSWORD?</p>
+                            <button>LOG IN</button>
+                                </form>
+                          </div>
+
+                          <div class="signup hide">
+                            <h2>SIGN UP</h2>
+                            <div class="inputbox">
+                              <input type="text" name="fullname" placeholder="  FULLNAME">
+                              <input type="text" name="email" placeholder="  EMAIL">
+                              <input type="password" name="password" placeholder="  PASSWORD">
+                              <input type="number" name="adhar" placeholder="  ADHAR NUMBER">
+                                <input type="number" name="phone" placeholder="  PHONE NUMBER">
+                                <input type="text" name="address" placeholder="  ADDRESS ">
+                            </div>
+                            <button>SIGN UP</button>
+                          </div>
+
+                        </div>
+                        <!-- frontbox -->
+                      </div>
                   </div>
-                </footer>
-</body>
+                  <div class="modal-footer"style="background-color: transparent">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">X</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </header>
+
+        <div class="container" style="margin-top: 3%">
+            <div class="row" style="border-radius: 5px;padding: 1%;padding-top : 3%;background-color: whitesmoke">
+<!--
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#home" role="tab" aria-controls="pills-home" aria-selected="true">Requests</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#profile" role="tab" aria-controls="pills-profile" aria-selected="false">Update Status</a>
+                  </li>
+                </ul>
+-->
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Requests</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Update Case Status</a>
+                  </li>
+
+                </ul>
+
+            </div>
+            <div class="row"style="padding: 1%;padding-top : 0%;background-color: whitesmoke">
+                <div class="tab-content" id="myTabContent">
+                  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                      <table class="table table-striped" style="padding: 15">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Params</th>
+                          <th scope="col">Datas</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>Case no:</td>
+                          <td>673489</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">2</th>
+                          <td>FIR no:</td>
+                            <td>124567</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">3</th>
+                          <td>Court</td>
+                            <td>Khurdha Civil Court</td>
+                        </tr>
+
+                          <tr>
+                          <th scope="row">4</th>
+                          <td>Current status:</td>
+                            <td>Pending at Khurdha Police Station</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                      <button class="btn btn-secondary">Accept</button>&nbsp; &nbsp; <button class="btn btn-secondary">Reject</button>
+                      <hr/>
+
+                  </div>
+                  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                      <div class="dropdown">
+                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Select Case No
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">20890(KananVihar Land Forgery)</a>
+                        <a class="dropdown-item" href="#">18900(Damana tripple murder)</a>
+                        <a class="dropdown-item" href="#">73833(Khandagiri Civil Case)</a>
+                      </div>
+                    </div>
+                      <textarea style="width: 200%;margin-top: 30px;height: 150px;border: none;border-radius: 10px;color: gray;padding: 1%;padding-left: 2%;overflow: auto" placeholder="Current Status..."></textarea>
+                      <br/><br/>
+                      <button class="btn btn-secondary">Update</button>
+                   </div>
+                </div>
+            </div>
+
+        </div>
+
+        <footer>
+          <div class="copyright">
+            <p>&copy 2018 - CaveMenDev</p>
+          </div>
+          <div class="social">
+            <a href="#" class="support">Contact Us</a>
+            <a href="#" class="face">f</a>
+            <a href="#" class="tweet">t</a>
+            <a href="#" class="linked">in</a>
+          </div>
+        </footer>
+
+    </body>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 
 </html>
