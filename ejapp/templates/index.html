@@ -96,23 +96,32 @@
                               <form method="post" action="{% url 'signup' %}">
                                   {% csrf_token %}
                             <div class="inputbox">
-                              <input type="text" name="fullname" placeholder="  FULLNAME">
-                              <input type="text" name="email" placeholder="  EMAIL">
-                              <input type="password" id="password" name="password" placeholder="  PASSWORD">
+                              <input type="text" name="fullname" placeholder="  FULLNAME" required>
+                              <input type="text" name="email" placeholder="  EMAIL" required>
+                              <input type="password" id="password" name="password" placeholder="  PASSWORD" required>
                                 <div class="warning" >Password Criteria Not Satisfied</div>
-                              <input type="number" name="aadhar" id="aadhar" placeholder="  ADHAR NUMBER">
-                                <input type="number" name="phone" placeholder="  PHONE NUMBER">
-                                <input type="text" name="address" placeholder="  ADDRESS ">
+                              <input type="number" name="aadhar" id="aadhar" placeholder="  ADHAR NUMBER" required>
+                                <input type="number" name="phone" placeholder="  PHONE NUMBER" required>
+                                <input type="text" name="address" placeholder="  ADDRESS " required>
                             </div>
-                            <button type="submit">SIGN UP</button>
+                            <button id="signup" type="submit">SIGN UP</button>
                               </form>
                               <script>
                                   $("#password").keyup(function() {
-                                    var re = /a^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+                                    var re = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
                                     var password = $(this).val();
-                                    if(! re.test(password))
+                                    console.log(password)
+                                    console.log(re.test(password));
+                                    if( re.test(password))
+                                    {
+                                        $('.warning').css('display','none');
+                                        $('#signup').prop('disabled',false);
+
+                                    }
+                                    if(!re.test(password))
                                     {
                                         $('.warning').css('display','inline-block');
+                                        $('#signup').prop('disabled',true);
                                     }
                                   });
                               </script>
