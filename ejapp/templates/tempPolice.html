@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+</head>
+<body>
+{% for fir,uid in context %}
+<div id="{{fir}}">
+    <div class="fir">{{fir}}</div> <br>
+    <div class="uid">{{uid}}</div> <br>
+    <button class="accept">Accept</button>
+    <button class="reject">Reject</button><br>
+    <div class="reject_temp" style="display:none">
+    <br>State Reason : <input type="text" class="reason"><br><input type="submit" class="reasonsubmit" value="submit">
+    </div>
+</div>
+<hr>
+{% endfor %}
+
+<script>
+$('.accept').click(function() {
+    var uid_div = $(this).parent();
+    fir = uid_div.attr('id');
+   $.ajax({
+   url: '/submit-action/',
+   data: {
+      'action':'accept',
+      'fir':fir
+    },
+    dataType: 'json',
+    success: function (content) {
+
+        uid_div.remove();
+
+    }
+
+
+    });
+
+
+});
+$('.reject').click(function() {
+
+    var fir_div = $(this).parent();
+    fir = fir_div.attr('id');
+    reason_element = (fir_div.children('.reject_temp'));
+    reason_element.css('display','inline-block');
+
+});
+$('.reasonsubmit').click(function() {
+
+    fir_div = $(this).parent().parent();
+    fir = fir_div.attr('id');
+
+    var reason = fir_div.children('.reject_temp').children('.reason').val();
+   $.ajax({
+   url: '/submit-action/',
+   data: {
+      'action':'reject',
+      'fir':fir,
+      'reason':reason
+    },
+    dataType: 'json',
+    success: function (all) {
+        console.log('cuss');
+        fir_div.remove();
+
+    }
+
+
+    });
+});
+
+</script>
+</body>
+</html>
+

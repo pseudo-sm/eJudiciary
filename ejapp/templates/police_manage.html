@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for fir in context %}
+    <div id="{{fir}}">
+    {{fir}}
+    <form action="{% url 'forward_csi' %}" method="post">
+        {% csrf_token %}
+        <h3>Seizure List</h3>
+        <input type="text" name="seizure">
+        <h3>Medical Details</h3>
+        <input type="text" name="medical">
+        <input type="hidden" value="{{fir}}" name="fir"><br>
+        <input type="submit" value="submit">
+    </form>
+        <hr>
+    </div>
+{% endfor %}
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load timestamp %}
+    <meta charset="UTF-8">
+    <title>TempAdmin</title>
+</head>
+<body>
+<h1>CASES</h1>
+{% for cid,cname,cphone,cemail,caadhar,caddress,events in data %}
+<div>
+    <h4>Case Id: {{ cid }}</h4>
+    <h4>User Details</h4>
+    <table border="1">
+        <tr><td>Name</td><td>{{ cname }}</td></tr>
+        <tr><td>Phone</td><td>{{ cphone }}</td></tr>
+        <tr><td>Email</td><td>{{ cemail }}</td></tr>
+        <tr><td>Aadhar</td><td>{{ caadhar }}</td></tr>
+        <tr><td>Address</td><td>{{ caddress }}</td></tr>
+    </table>
+    <br>
+    <table border="1">
+        <tr><td>Case With</td><td>Date</td><td>Time</td></tr>
+        {% for timestamp,event_name in events.items %}
+        <tr><td>{{event_name}}</td><td>{{ timestamp | change:"time"}}</td><td>{{ timestamp | change:"date"}}</td></tr>
+        {% endfor %}
+    </table>
+    <hr>
+</div>
+{% endfor %}
+</body>
+</html>
