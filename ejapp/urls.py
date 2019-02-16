@@ -21,6 +21,7 @@ from . import views
 urlpatterns = [
 
 
+    url(r'^filefir',views.filefir,name="filefir"),
     url(r'^profile',views.profile,name="profile"),
     url(r'^police',views.police_home,name="police"),
     url(r'^logout',views.logout,name="logout"),

@@ -4,6 +4,7 @@ import pyrebase
 from django.shortcuts import render,HttpResponse, HttpResponseRedirect
 from django.contrib import auth as authe
 from functools import wraps
+
 config = {
     'apiKey': "AIzaSyBQtKDMBy_zKICw9pSHcc4ypSn9w4kc_JA",
     'authDomain': "ejudiciary-66067.firebaseapp.com",
@@ -111,3 +112,7 @@ def police_home(request):
     context = zip(users,names,phones,case_nos,firnos,firsubjects,firtimestamps,policestations,firdescriptions,epochs)
 
     return render(request,"temp.html",{"context":context})
+
+def filefir(request):
+
+    firsubject = request.POST.get("firsubject")
