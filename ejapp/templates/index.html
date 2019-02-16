@@ -9,10 +9,17 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <script src="static/js/jQuery.3.3.1.js"></script>
         
-        
-        <style>
-           
-        </style>
+
+            <style>
+            .warning {
+                font-size: 10px;
+                margin-top: -15px;
+                top: 0;
+                color: red;
+                margin-left: -113px;
+                display:none;
+            }
+            </style>
     </head>
     <body>
         <header>
@@ -92,6 +99,7 @@
                               <input type="text" name="fullname" placeholder="  FULLNAME">
                               <input type="text" name="email" placeholder="  EMAIL">
                               <input type="password" id="password" name="password" placeholder="  PASSWORD">
+                                <div class="warning" >Password Criteria Not Satisfied</div>
                               <input type="number" name="aadhar" id="aadhar" placeholder="  ADHAR NUMBER">
                                 <input type="number" name="phone" placeholder="  PHONE NUMBER">
                                 <input type="text" name="address" placeholder="  ADDRESS ">
@@ -100,12 +108,12 @@
                               </form>
                               <script>
                                   $("#password").keyup(function() {
-                                    var re = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+                                    var re = /a^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
                                     var password = $(this).val();
-                                    console.log(re.test(password));
-
-
-
+                                    if(! re.test(password))
+                                    {
+                                        $('.warning').css('display','inline-block');
+                                    }
                                   });
                               </script>
                           </div>
