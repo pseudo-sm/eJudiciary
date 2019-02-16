@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        {% load static %}
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="{% static 'css/eJudis.css' %}">
+        <link rel="stylesheet" href="../static/css/eJudis.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -11,7 +10,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-        <script src="{% static 'js/jQuery.3.3.1.js' %}"></script>
+        <script src="../static/js/jQuery.3.3.1.js"></script>
         
         <style>
             
@@ -73,9 +72,7 @@
                 </div></a>
             </div>
         </div>
-        
-        
-        
+
                     <!--FIR tracking -->
         <div class="row" style="background-color: white;padding: 1%" id="fir_track">
             <div class="col-sm-12 col-md-12 col-lg-12" style="background: whitesmoke;color: gray;font-size: 25px;border-radius: 20px;margin-bottom: 20px">
@@ -83,53 +80,54 @@
             </div>
             
             {% for users,names,phones,case_nos,firnos,firsubjects,firtimestamps,policestations,firdescriptions,epochs in context %}
-
-            <div class="col-sm-2 col-md-2 col-lg-2" style="background: white;padding: 1%" data-toggle="modal" id="m{{firnos}}">
-
-
+            <script>
+                console.log('{{firnos}}');
+            </script>
+            <div class="col-sm-2 col-md-2 col-lg-2" style="background: white;padding: 1%"data-toggle="modal" data-target="#{{firnos}}">
+                
                 <div style="border: solid 0.5px grey;width: 100%;height: 100px;">
                         <!--FIR Subject-->
                     
                     <img src="../static/images/backgrounds-gradient-red-red-background-844915-1920x1080.png" style="width: 100%;height: 100px;object-fit: fill;object-position: center">
                 </div>
-                <div style="width: 100%;height: 50px;padding: 10px;background-color: whitesmoke;color: grey;border: solid 0.5px grey;cursor: pointer" data-target="#{{firnos}}">
+                <div style="width: 100%;height: 50px;padding: 10px;background-color: whitesmoke;color: grey;border: solid 0.5px grey;cursor: pointer" data-target="">
                     <center>View</center>
                 </div>
-
             </div>
-
-            <div class="modal fade" style="opacity:1;margin-top:2%;padding:3%;" id="{{firnos}}" tabindex="-1" role="dialog" aria-labelledby="{{firnos}}" aria-hidden="true">
+            
+            <div class="modal fade" id="{{firnos}}" tabindex="-1" role="dialog" aria-labelledby="fir_det" aria-hidden="true">
               <div class="modal-dialog modal-dialog-scrollable" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" >F.I.R No</h5>
+                    <h5 class="modal-title" id="">F.I.R No</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   <div class="modal-body">
                       <div style="display: block">
-                        <h2>{{firsubjects}}</h2><hr/>
-                        <span>{{firdescriptions}}</span>
+                        <h2>Subject Of the F.I.R</h2><hr/>
+                        <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                          It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                          It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</span>  
                       </div>
                       
                     <img src="../static/images/backgrounds-gradient-red-red-background-844915-1920x1080.png" style="width: 100%;height: auto;object-fit: fill;object-position: center;display: none">
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary close" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary accept">Accept</button>
-                      <button type="button" class="btn btn-primary reject"data-toggle="modal" data-target="#reson_reject" style="background-color: #c21616"data-dismiss="modal">Reject</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Accept</button>
+                      <button type="button" class="btn btn-primary"data-toggle="modal" data-target="#reson_reject" style="background-color: #c21616"data-dismiss="modal">Reject</button>
                   </div>
                 </div>
               </div>
             </div>
 
-
             <div class="modal fade" id="reson_reject" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Reason of Rejection.</h5>
+                    <h5 class="modal-title" id="">Reason of Rejection.</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -144,41 +142,11 @@
                 </div>
               </div>
             </div>
-            <script>
-                $('#m{{firnos}}').click(function() {
-                    $('#{{firnos}}').css('display','inline-block');
-                });
-                $('.close').click(function() {
-                    $('.modal').hide('slow');
-                });
-                $('.accept').click(function() {
-                    var uid_div = $(this).parent().parent().parent().parent();
-
-                    fir = uid_div.attr('id');
-                   $.ajax({
-                   url: '/submit-action/',
-                   data: {
-                      'action':'accept',
-                      'fir':fir
-                    },
-                    dataType: 'json',
-                    success: function (content) {
-
-                        var modal = (uid_div.attr('id'));
-                        $('#m'+modal).remove();
-                        $('#'+modal).remove();
-
-                    }
-
-
-                    });
-
-
-                });
-            </script>
-
-             {% endfor %}
-
+            {% endfor %}
+            <div class="col-sm-2 col-md-2 col-lg-2" >
+                    
+            </div>
+            
             <hr/><br/>
         </div>
         

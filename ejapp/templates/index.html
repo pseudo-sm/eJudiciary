@@ -33,14 +33,11 @@
 
               <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                  <li class="nav-item active">
-                    <a class="nav-link" href="../template/home.html" style="color: white">Home <span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="../template/profile.html" style="color: white">Profile</a>
+                    <li class="nav-item">
+                    <a class="nav-link" href="#" style="color: white">Feeds</a>
                   </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="../index.html" style="color: white">Feeds</a>
+                    <a class="nav-link" href="{% url 'auth_signup' %}" style="color: white">Advocate/Judge</a>
                   </li>
                   
                 </ul>
@@ -88,6 +85,11 @@
                              <form action="{% url 'login' %}" method="post">
                                  {% csrf_token %}
                             <div class="inputbox">
+                               <select name="type" class="form-control">
+                                   <option>User</option>
+                                   <option>Judge</option>
+                                   <option>Advocate</option>
+                               </select><br>
                               <input type="text" name="email" placeholder="  EMAIL">
                               <input type="password" name="password" placeholder="  PASSWORD">
 

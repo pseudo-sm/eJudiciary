@@ -70,6 +70,7 @@ def login(request):
     users = list(dict(db.child("users").child("users").get().val()).keys())
     email = request.POST.get("email")
     password = request.POST.get("password")
+    type = request.POST.get("type")
     auth.sign_in_with_email_and_password(email,password)
     uid = auth.current_user["localId"]
     if uid in users:

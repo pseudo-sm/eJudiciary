@@ -28,8 +28,12 @@ urlpatterns = [
     url(r'^profile',views.profile,name="profile"),
     url(r'^submit-action',views.submit_action,name="submit_action"),
     url(r'^police-manage',views.police_manage,name="police_manage"),
+<<<<<<< Updated upstream
     url(r'^chargesheet',views.chargesheet,name="chargesheet"),
     url(r'^police',views.police_home,name="police"),
+=======
+    url(r'^police-dashboard',views.police_home,name="police"),
+>>>>>>> Stashed changes
     url(r'^logout',views.logout,name="logout"),
     url(r'^signup',views.signup,name="signup"),
     url(r'^login',views.login,name="login"),
