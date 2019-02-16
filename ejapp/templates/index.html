@@ -91,13 +91,23 @@
                             <div class="inputbox">
                               <input type="text" name="fullname" placeholder="  FULLNAME">
                               <input type="text" name="email" placeholder="  EMAIL">
-                              <input type="password" name="password" placeholder="  PASSWORD">
-                              <input type="number" name="aadhar" placeholder="  ADHAR NUMBER">
+                              <input type="password" id="password" name="password" placeholder="  PASSWORD">
+                              <input type="number" name="aadhar" id="aadhar" placeholder="  ADHAR NUMBER">
                                 <input type="number" name="phone" placeholder="  PHONE NUMBER">
                                 <input type="text" name="address" placeholder="  ADDRESS ">
                             </div>
-                            <button>SIGN UP</button>
+                            <button type="submit">SIGN UP</button>
                               </form>
+                              <script>
+                                  $("#password").keyup(function() {
+                                    var re = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+                                    var password = $(this).val();
+                                    console.log(re.test(password));
+
+
+
+                                  });
+                              </script>
                           </div>
 
                         </div>
