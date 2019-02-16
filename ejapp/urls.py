@@ -19,7 +19,7 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-
+    url(r'^admin',views.admin,name="admin"),
     url(r'^advocate',views.advocate,name="advocate"),
     url(r'^judge',views.judge,name="judge"),
     url(r'^filefir',views.filefir,name="filefir"),

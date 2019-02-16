@@ -113,6 +113,37 @@ def police_home(request):
 
     return render(request,"temp.html",{"context":context})
 
+
+def admin(request):
+
+    all_cases = dict(db.child("cases").get().val())
+    csi = dict(db.child("users").child("csi").get().val())
+    all_users = dict(db.child("users").child("users").get().val())
+    uid = []
+    cid = []
+    pid = []
+    cname = []
+    cphone =[]
+    cemail=[]
+    caadhar=[]
+    caddress=[]
+    cases = {}
+    events = []
+    for key in all_cases:
+        cid.append(key)
+        cname.append(all_users[all_cases[key]["uid"]]["name"])
+        cphone.append(all_users[all_cases[key]["uid"]]["phone"])
+        cemail.append(all_users[all_cases[key]["uid"]]["email"])
+        caddress.append(all_users[all_cases[key]["uid"]]["address"])
+        caadhar.append(all_users[all_cases[key]["uid"]]["aadhar"])
+        uid=all_cases[key]["uid"]
+        cases.update(all_users[uid]["cases"])
+        events.append(all_users[uid]["cases"][key]["events"])
+
+    data = zip(cid,cname,cphone,cemail,caadhar,caddress,events)
+    return render(request,"admin_temp.html",{"data":data})
+
+
 def filefir(request):
 
     firsubject = request.POST.get("firsubject")
