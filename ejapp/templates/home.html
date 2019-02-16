@@ -145,10 +145,65 @@
                 <div class="col-sm-2 col-md-3 col-lg-3">
                     <center>
                         <div class="animated zoomIn"style="border: none;box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);width: 100%;padding: 5%; margin: 1%;margin-bottom:10%">
-                            <img src="../static/images/report.png" style="width: 100px;height: 100px"><hr/><button style="width: 100%;background-color: #c21616;padding: 5px;color: white;font-family: cursive;border-radius: 2px">My Cases</button><hr/>
+                            <img src="../static/images/report.png" style="width: 100px;height: 100px"><hr/><button style="width: 100%;background-color: #c21616;padding: 5px;color: white;font-family: cursive;border-radius: 2px"data-toggle="modal" data-target="#mycase">My Cases</button><hr/>
                         </div>
                     </center>
                 </div>
+
+                <div class="modal fade" id="mycase" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" >My Case</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                       <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Params</th>
+                          <th scope="col">Datas</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>Case no:</td>
+                          <td>673489</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">2</th>
+                          <td>FIR no:</td>
+                            <td>124567</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">3</th>
+                          <td>Court</td>
+                            <td>Khurdha Civil Court</td>
+                        </tr>
+                          <tr>
+                          <th scope="row">4</th>
+                          <td>Advocate Associated</td>
+                            <td><span style="display: block">Jwalamukhi Chaturbedi</span><button class="btn btn-secondary" style="display: none;"><i class="fas fa-plus "></i> &nbsp;Add Advocate</button></td>
+                        </tr>
+                          <tr>
+                          <th scope="row">5</th>
+                          <td>Current status:</td>
+                            <td>Next hearing on 31st Feb 2029</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
 
                 <div class="col-sm-2 col-md-3 col-lg-3">
                     <center>
