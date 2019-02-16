@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="../static/css/eJudis.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+        <script src="../static/js/jQuery.3.3.1.js"></script>
+
+        <style>
+
+        </style>
+
+
+</head>
+<body  style="background-image:url(https://biblicalcounseling.com/wp-content/uploads/2017/09/3D-Black-Background.jpg)">
+         <header>
+            <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #C21616;color: white">
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon" style="color: white"></span>
+              </button>
+              <a class="navbar-brand" href="#" style="color: white;font-family:cursive;text-shadow: 5px 5px 14px white">e-Judiciary</a>
+
+              <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="../template/home.html" style="color: white">Home <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../template/profile.html" style="color: white">Profile</a>
+                  </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="../index.html" style="color: white">Feeds</a>
+                  </li>
+
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                        <li class="nav-item ">
+                            <a class="nav-link" href="#" style="color: white"><i class="fas fa-map-marker-alt"></i>&nbsp; Khurdha,Odisha</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{% url 'logout' %}" style="color: white" >Log In</a>
+                        </li>
+                    </ul>
+                </form>
+              </div>
+            </nav>
+
+
+        </header>
+             <div style="margin-top:-63%" class="container_log">
+                <div class="backbox" style="height: 110%;margin-top: 70px">
+                  <div class="loginMsg">
+                    <div class="textcontent">
+                      <p class="title">CSI?</p>
+                      <p>SignUp to avail features for CSI.</p>
+                      <button id="switch1">Sign Up</button>
+                    </div>
+                  </div>
+                  <div class="signupMsg visibility">
+                    <div class="textcontent">
+                      <p class="title">Police?</p>
+                      <p>SignUp to avail features for Police.</p>
+                      <button id="switch2">Sign Up</button>
+                    </div>
+                  </div>
+                </div>
+                <!-- backbox -->
+
+                <div class="frontbox">
+                  <div class="login">
+                    <h2>POLICE</h2>
+                    <div class="inputbox">
+                      <input type="text" name="fullname" placeholder="  FULLNAME">
+                      <input type="text" name="email" placeholder="  EMAIL">
+                      <input type="password" name="password" placeholder="  PASSWORD">
+                      <input type="number" name="aadhar" placeholder="  ADHAR NUMBER">
+                        <input type="number" name="phone" placeholder="  PHONE NUMBER">
+                        <input type="number" name="emp_no" placeholder="  EMPLOYEE NUMBER">
+                    </div>
+                    <button>SIGN UP</button>
+                  </div>
+
+                  <div class="signup hide">
+                    <h2>CSI</h2>
+                      <form method="post" action="{% url 'signup' %}">
+                            <div class="inputbox">
+                              <input type="text" name="fullname" placeholder="  FULLNAME">
+                              <input type="text" name="email" placeholder="  EMAIL">
+                              <input type="password" name="password" placeholder="  PASSWORD">
+                                <input type="number" name="aadhar" placeholder="  ADHAR NUMBER">
+                                <input type="number" name="phone" placeholder="  PHONE NUMBER">
+                                <input type="number" name="emp_no" placeholder="  EMPLOYEE NUMBER">
+
+                            </div>
+                        <button>SIGN UP</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+                
+    <footer style="margin-top: 50%">
+                  <div class="copyright">
+                    <p>&copy 2018 - CaveMenDev</p>
+</div>
+                  <div class="social">
+                    <a href="#" class="support">Contact Us</a>
+                    <a href="#" class="face">f</a>
+                    <a href="#" class="tweet">t</a>
+                    <a href="#" class="linked">in</a>
+                  </div>
+                </footer>
+</body>
+    
+            <script>
+                var $loginMsg = $('.loginMsg'),
+                      $login = $('.login'),
+                      $signupMsg = $('.signupMsg'),
+                      $signup = $('.signup'),
+                      $frontbox = $('.frontbox');
+
+                    $('#switch1').on('click', function() {
+                      $loginMsg.toggleClass("visibility");
+                      $frontbox.addClass("moving");
+                      $signupMsg.toggleClass("visibility");
+
+                      $signup.toggleClass('hide');
+                      $login.toggleClass('hide');
+                    })
+
+                    $('#switch2').on('click', function() {
+                      $loginMsg.toggleClass("visibility");
+                      $frontbox.removeClass("moving");
+                      $signupMsg.toggleClass("visibility");
+
+                      $signup.toggleClass('hide');
+                      $login.toggleClass('hide');
+                    })
+
+                    setTimeout(function(){
+                      $('#switch1').click()
+                    },1000)
+
+                    setTimeout(function(){
+                      $('#switch2').click()
+                    },3000)
+            </script>
+</html>
