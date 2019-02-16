@@ -101,6 +101,7 @@
                               <input type="password" id="password" name="password" placeholder="  PASSWORD" required>
                                 <div class="warning" >Password Criteria Not Satisfied</div>
                               <input type="number" name="aadhar" id="aadhar" placeholder="  ADHAR NUMBER" required>
+                                <div class="warning">Aadhar not valid.</div>
                                 <input type="number" name="phone" placeholder="  PHONE NUMBER" required>
                                 <input type="text" name="address" placeholder="  ADDRESS " required>
                             </div>
@@ -123,7 +124,24 @@
                                         $('.warning').css('display','inline-block');
                                         $('#signup').prop('disabled',true);
                                     }
+
                                   });
+
+                                  $("#aadhar").keyup(function(){
+                                    var re = /^[0-9]+$/;
+                                    var aadhar = $(this).val();
+                                    if(re.test(aadhar) && aadhar.length==12)
+                                    {
+                                        $('.warning').css('display','none');
+                                        $('#signup').prop('disabled',true);
+                                    }
+                                    else
+                                    {
+                                        $('.warning').css('display','inline-block');
+                                        $('#signup').prop('disabled',true);
+
+                                    }
+                                    });
                               </script>
                           </div>
 
