@@ -1,4 +1,16 @@
+::-webkit-scrollbar {
+                width: 5px;
+            }
 
+            ::-webkit-scrollbar-track {
+                background: white; 
+            }
+
+            ::-webkit-scrollbar-thumb {
+                border: solid 0px;
+                border-radius: 5px;
+                background: #c21616; 
+            }
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
@@ -538,8 +550,8 @@ footer .social a:hover {
   display: inline-block;
   float: left;
   border-right: 2px dashed #EEEEEE;
-  background: #FFFFFF;
-  color: #000000;
+  background: #c21616;
+  color: whitesmoke;
   margin-top: 50px;
   opacity: 0;
   text-align: center;
@@ -548,7 +560,7 @@ footer .social a:hover {
 }
 
 .profile-card header h1 {
-  color: #c21616;
+  color: white;
 }
 
 .profile-card header a {
@@ -956,4 +968,7 @@ footer .social a:hover {
       border-radius: 4px;
     }
   }
+}
+.fir_main_div{
+    
 }
