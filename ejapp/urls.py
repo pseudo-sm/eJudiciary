@@ -21,9 +21,13 @@ from . import views
 urlpatterns = [
     url(r'^admin',views.admin,name="admin"),
     url(r'^advocate',views.advocate,name="advocate"),
+    url(r'^csi',views.csi,name="csi"),
+    url(r'^forward',views.forward_csi,name="forward_csi"),
     url(r'^judge',views.judge,name="judge"),
     url(r'^filefir',views.filefir,name="filefir"),
     url(r'^profile',views.profile,name="profile"),
+    url(r'^submit-action',views.submit_action,name="submit_action"),
+    url(r'^police-manage',views.police_manage,name="police_manage"),
     url(r'^police',views.police_home,name="police"),
     url(r'^logout',views.logout,name="logout"),
     url(r'^signup',views.signup,name="signup"),

@@ -108,15 +108,15 @@
                         {% csrf_token %}
                         <input type="text" name="firsubject" style="width: 100%;border: none;background-color: whitesmoke;height: 50px;padding: 10px;padding-left: 20px;border-radius: 10px" placeholder="Subject...."><hr/>
                         <div class="dropdown" style="background-color: #f2f2f2;margin-bottom: 20px;height: 50px;padding-top: 5px;cursor:pointer;padding: 1%;border-radius: 10px">
-                                  <span class="dropdown-toggle" type="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;background-color: #f2f2f2;border: solid #f2f2f2;margin-top: 1%;color: grey;">
+                                  <select class="dropdown-toggle" name="station" type="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;background-color: #f2f2f2;border: solid #f2f2f2;margin-top: 1%;color: grey;">
                                     Select Police Station
-                                  </span>
                                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="#">Patia Police Station</a>
-                                    <a class="dropdown-item" href="#">Chandrasekhar-Pur Police Station</a>
+                                    <option class="dropdown-item" href="#">Patia Police Station</option>
+                                    <option class="dropdown-item" href="#">Chandrasekhar-Pur Police Station</option>
                                   </div>
-                                </div><hr/>
-                        <textarea style="width: 100%;background-color: whitesmoke;border: none;border-radius: 10px;height: 200px;padding: 10px;overflow: auto" placeholder="Description..."></textarea><br/><br/>
+                                  </select><hr/>
+                                </div>
+                        <textarea name="description" style="width: 100%;background-color: whitesmoke;border: none;border-radius: 10px;height: 200px;padding: 10px;overflow: auto" placeholder="Description..."></textarea><br/><br/>
                         <button style="background-color: #c21616;padding: 1%;padding-left: 2%;padding-right: 2%;border-radius:10px;color:white;font-style: oblique;float: right;">Submit</button>
 
                     </form>

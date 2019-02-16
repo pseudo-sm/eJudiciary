@@ -4,7 +4,9 @@ import pyrebase
 from django.shortcuts import render,HttpResponse, HttpResponseRedirect
 from django.contrib import auth as authe
 from functools import wraps
-
+from random import randint
+from datetime import datetime
+import json
 config = {
     'apiKey': "AIzaSyBQtKDMBy_zKICw9pSHcc4ypSn9w4kc_JA",
     'authDomain': "ejudiciary-66067.firebaseapp.com",
@@ -146,7 +148,21 @@ def admin(request):
 
 def filefir(request):
 
-    firsubject = request.POST.get("firsubject")
+    uid = auth.current_user["localId"]
+    print(request.POST)
+    subject = request.POST.get("firsubject")
+    station = request.POST.get("station")
+    description = request.POST.get("description")
+    cid = randint(100000,999999)
+    db.child("firs").child(cid).update({"uid":uid,"pid":station})
+    db.child("cases").child(cid).update({"uid":uid,"pid":station})
+    firno = randint(100000,999999)
+    epoch = int(datetime.timestamp(datetime.now()))
+    firtimestamp = int(datetime.timestamp(datetime.now()))
+    db.child("users").child("users").child(uid).child('cases').child(cid).child("events").update({firtimestamp:"police"})
+    db.child("users").child("users").child(uid).child("cases").child(cid).update({"epoch":epoch,"firdescription":description,"firno":firno,"firsubject":subject,"policestation":station,"firtimestamp":firtimestamp})
+    return HttpResponseRedirect('/home/')
+
 
 def auth_signup(request):
 
@@ -180,3 +196,81 @@ def judge(request):
     uid = auth.current_user["localId"]
     db.child("users").child("judge").child(uid).update({"name": name, "email": email,"aadhar": aadhar, "phone": phone, "district": district,"court": court})
     return HttpResponse("Welcome to judge's home.")
+
+
+def police_home(request):
+
+    auth.sign_in_with_email_and_password("police@gmail.com","password")
+    pid = auth.current_user["localId"]
+    all_firs = []
+    uids = []
+    firs = dict(db.child("firs").get().val())
+    for fir in firs:
+        all_firs.append(fir)
+        uids.append(firs[fir]["uid"])
+    context = zip(all_firs,uids)
+    return render(request,"tempPolice.html",{"context":context})
+
+def police_manage(request):
+
+    all_firs = dict(db.child("firs").get().val())
+    users = dict(db.child("users").child("users").get().val())
+    context_firs = []
+    print(all_firs)
+    for fir in all_firs:
+        uid = all_firs[fir]["uid"]
+        epoch = str(users[uid]["cases"][fir]["epoch"])
+        status = users[uid]["cases"][fir]["events"][str(epoch)]
+        if status == "police accepted":
+            context_firs.append(fir)
+    return render(request,"police_manage.html",{"context":context_firs})
+
+
+def forward_csi(request):
+
+    cases = dict(db.child("cases").get().val())
+    seizure_list = request.POST.get("seizure")
+    medical = request.POST.get("medical")
+    fir = request.POST.get("fir")
+    uid = cases[fir]["uid"]
+    timestamp = int(datetime.timestamp(datetime.now()))
+    db.child("users").child("users").child(uid).child("cases").child(fir).update({"seizure list":seizure_list,"medical report":medical})
+    db.child("users").child("users").child(uid).child("cases").child(fir).child("events").update({timestamp:"csi"})
+    db.child("users").child("users").child(uid).child("cases").child(fir).update({"epoch":timestamp})
+    db.child("users").child("csi").child("rmPWzbkBDFNgKSBOBBXgblvCHYu2").child("cases").child(fir).update({uid:0})
+    return HttpResponseRedirect('/police-manage/')
+
+def submit_action(request):
+
+    fir = request.GET.get("fir")
+    uid = db.child("firs").child(fir).child("uid").get().val()
+    action = request.GET.get("action")
+    reason = request.GET.get("reason")
+    timestamp = int(datetime.timestamp(datetime.now()))
+    if action == "accept":
+        db.child("users").child("users").child(uid).child("cases").child(int(fir)).update({"epoch":timestamp})
+        # db.child("users").child("csi").child("rmPWzbkBDFNgKSBOBBXgblvCHYu2").child("cases").update({fir:0})
+        db.child("users").child("users").child(uid).child("cases").child(int(fir)).child("events").update({timestamp:"police accpeted"})
+    else:
+        db.child("users").child("users").child(uid).child("cases").child(int(fir)).update({"epoch":timestamp})
+        db.child("users").child("users").child(uid).child("cases").child(fir).update({"reject":reason})
+        db.child("users").child("users").child("cases").child(fir).child("events").update({timestamp:"police rejected"})
+    all = True
+    return HttpResponse(json.dumps(all),content_type="json/application")
+
+
+def csi(request):
+    auth.sign_in_with_email_and_password("csi@gmail.com","password")
+    csid = auth.current_user["localId"]
+    uids = []
+    names = []
+    all_users = dict(db.child("users").child("users").get().val())
+    all_cases = dict(db.child("users").child("csi").child(csid).child("cases").get().val())
+    all_cases = list(all_cases.keys())
+    all_firs = db.child("firs").get().val()
+    for case in all_cases:
+        uid = all_firs[case]["uid"]
+        uids.append(uid)
+        names.append(all_users[uid]["name"])
+
+    return render(request,"csi.html")
