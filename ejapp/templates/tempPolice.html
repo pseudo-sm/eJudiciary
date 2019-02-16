@@ -21,27 +21,7 @@
 {% endfor %}
 
 <script>
-$('.accept').click(function() {
-    var uid_div = $(this).parent();
-    fir = uid_div.attr('id');
-   $.ajax({
-   url: '/submit-action/',
-   data: {
-      'action':'accept',
-      'fir':fir
-    },
-    dataType: 'json',
-    success: function (content) {
 
-        uid_div.remove();
-
-    }
-
-
-    });
-
-
-});
 $('.reject').click(function() {
 
     var fir_div = $(this).parent();

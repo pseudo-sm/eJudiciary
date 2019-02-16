@@ -16,7 +16,7 @@ config = {
     'messagingSenderId': "783290318894"
   };
 firebase = pyrebase.initialize_app(config)
-
+1
 db = firebase.database()
 auth = firebase.auth()
 storage = firebase.storage()
@@ -113,7 +113,7 @@ def police_home(request):
 
     context = zip(users,names,phones,case_nos,firnos,firsubjects,firtimestamps,policestations,firdescriptions,epochs)
 
-    return render(request,"temp.html",{"context":context})
+    return render(request,"police_dashboard.html",{"context":context})
 
 
 def admin(request):
@@ -197,19 +197,19 @@ def judge(request):
     db.child("users").child("judge").child(uid).update({"name": name, "email": email,"aadhar": aadhar, "phone": phone, "district": district,"court": court})
     return HttpResponse("Welcome to judge's home.")
 
-
-def police_home(request):
-
-    auth.sign_in_with_email_and_password("police@gmail.com","password")
-    pid = auth.current_user["localId"]
-    all_firs = []
-    uids = []
-    firs = dict(db.child("firs").get().val())
-    for fir in firs:
-        all_firs.append(fir)
-        uids.append(firs[fir]["uid"])
-    context = zip(all_firs,uids)
-    return render(request,"tempPolice.html",{"context":context})
+#
+# def police_home(request):
+#
+#     auth.sign_in_with_email_and_password("police@gmail.com","password")
+#     pid = auth.current_user["localId"]
+#     all_firs = []
+#     uids = []
+#     firs = dict(db.child("firs").get().val())
+#     for fir in firs:
+#         all_firs.append(fir)
+#         uids.append(firs[fir]["uid"])
+#     context = zip(all_firs,uids)
+#     return render(request,"tempPolice.html",{"context":context})
 
 def police_manage(request):
 
@@ -243,13 +243,13 @@ def forward_csi(request):
 def submit_action(request):
 
     fir = request.GET.get("fir")
+    print(fir)
     uid = db.child("firs").child(fir).child("uid").get().val()
     action = request.GET.get("action")
     reason = request.GET.get("reason")
     timestamp = int(datetime.timestamp(datetime.now()))
     if action == "accept":
         db.child("users").child("users").child(uid).child("cases").child(int(fir)).update({"epoch":timestamp})
-        # db.child("users").child("csi").child("rmPWzbkBDFNgKSBOBBXgblvCHYu2").child("cases").update({fir:0})
         db.child("users").child("users").child(uid).child("cases").child(int(fir)).child("events").update({timestamp:"police accpeted"})
     else:
         db.child("users").child("users").child(uid).child("cases").child(int(fir)).update({"epoch":timestamp})
