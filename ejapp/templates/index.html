@@ -83,12 +83,16 @@
                         <div class="frontbox">
                           <div class="login">
                             <h2>LOG IN</h2>
+                             <form action="{% url 'login' %}" method="post">
+                                 {% csrf_token %}
                             <div class="inputbox">
                               <input type="text" name="email" placeholder="  EMAIL">
                               <input type="password" name="password" placeholder="  PASSWORD">
+
                             </div>
                             <p>FORGET PASSWORD?</p>
-                            <button>LOG IN</button>
+                            <button type="submit">LOG IN</button>
+                              </form>
                           </div>
 
                           <div class="signup hide">
@@ -122,7 +126,7 @@
                                     if(!re.test(password))
                                     {
                                         $('.warning').css('display','inline-block');
-                                        $('#signup').prop('disabled',true);
+                                        $('#signup').removeAttr('disabled');
                                     }
 
                                   });
