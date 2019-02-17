@@ -20,6 +20,7 @@ from . import views
 
 urlpatterns = [
     url(r'^admin/',views.admin,name="admin"),
+    url(r'^case-close/',views.case_close,name="case_close"),
     url(r'^stats/',views.stats,name="stats"),
     url(r'flagged/',views.flagged_cases,name="flagged"),
     url(r'^cases/(?P<case_no>\d+)/',views.case_admin,name="case_admin"),

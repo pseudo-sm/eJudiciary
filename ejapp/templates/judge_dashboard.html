@@ -208,7 +208,7 @@
                           <th>{{defend}}</th>
                           <th>{{petition}}</th>
                             <th><button class="btn btn-secondary"  data-toggle="modal" data-target="#c{{cases}}">Set Hearing Date</button></th>
-                            <th><button class="btn btn-secondary" >Close Case</button></th>
+                            <th><button class="btn btn-secondary" class="close-case">Close Case</button></th>
                         </tr>
                       <div class="modal fade" id="c{{cases}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
                           <div class="modal-dialog modal-dialog-scrollable" role="document">
@@ -255,6 +255,25 @@
                                         });
                                 });
                           </script>
+                          <script>
+                              $('.close-case').click(function() {
+                                       var id = $(this).parent().parent().parent().parent().attr('id');
+                                       caseid = id.slice(1,7);
+                                       $.ajax({
+                                       url: '/case-close/',
+                                       data: {
+                                          'caseid':caseid
+                                        },
+                                        dataType: 'json',
+                                        success: function (all) {
+                                            $('.close-case').parent().parent().parent().parent();
+
+                                        }
+
+
+                                        });
+                               });
+                          </script>
                       </tbody>
                     </table>
                       <hr/>
@@ -280,6 +299,11 @@
             </div>
 
         </div>
+        <br>
+        <h3>Other Similar Cases</h3>
+        {% for i in sorted_similar %}
+        <a href="{% url 'case_admin' case_no=i %}">{{i}}</a><br>
+        {% endfor %}
 
         <footer>
           <div class="copyright">

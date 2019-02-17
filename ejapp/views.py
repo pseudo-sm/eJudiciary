@@ -16,6 +16,7 @@ import pandas as pd
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
 import pickle
+import matplotlib.pyplot as plt
 
 
 
@@ -165,21 +166,28 @@ def judge_dashboard(request):
     petition = []
     defend = []
     jcases = dict(db.child("users").child("judge").child('ALKP9FtuMSTDwFE07dRdIZxCCSc2').child("cases").get().val())
+    cosine = Cosine(2)
+    similar = {}
     for case in jcases:
         cases.append(case)
         uid = all_cases[case]["uid"]
         if users[uid]["cases"][case].get("firno") is not None:
             firno.append(users[uid]["cases"][case]["firno"])
             firdesc.append(users[uid]["cases"][case]["firdescription"])
+            for cid in all_cases:
+                m_uid = all_cases[cid]["uid"]
+                similarity = cosine.similarity_profiles(cosine.get_profile(users[uid]["cases"][case]["firdescription"]), cosine.get_profile(users[m_uid]["cases"][cid]["firdescription"]))
+                similar.update({cid:similarity})
             charge.append(','.join(list(users[uid]["cases"][case]["chargesheet"].keys())))
             seizure.append(users[uid]["cases"][case]["seizure list"])
         defend.append(users[uid]["advocate"])
         petition.append(users[uid]["name"])
+    sorted_similar = sorted(similar,key=similar.get,reverse=True)
     lent = len(cases)
     context = zip(range(1,lent+1),cases,firno,firdesc,charge,seizure,defend,petition)
     print(cases,firno,firdesc,charge,seizure,defend,petition)
     add = zip(cases,firdesc)
-    return render(request,"judge_dashboard.html",{"context":context,'add':add})
+    return render(request,"judge_dashboard.html",{"context":context,'add':add,'sorted_similar':sorted_similar})
 
 def judge_update(request):
 
@@ -512,7 +520,6 @@ def flagged_cases(request):
 
 def stats(request):
 
-    cosine = Cosine(2)
     advocates = dict(db.child("users").child("advocate").get().val())
     for adv in advocates:
         dataset_text = pd.read_csv('advocates.tsv', delimiter = '\t', quoting = 3)
@@ -537,8 +544,6 @@ def stats(request):
 
         final_compare_text_str = ''.join(compare_list)
 
-        similarity = cosine.similarity_profiles(cosine.get_profile(final_text_str), cosine.get_profile(final_compare_text_str))
-
         pred = prediction()
         # pred.generate_a_dataset(qnt_of_rand_num = 200, dataset_name = 'lawers200.csv')
         # pred.train_model(csv_file = 'lawers200.csv', save_model_name = 'model200.pickle')
@@ -549,3 +554,14 @@ def stats(request):
 
     return HttpResponse(status=204)
 
+def case_close(request):
+
+    cases = dict(db.child("cases").get().val())
+    caseid = request.GET.get("caseid")
+    uid = cases[caseid]["uid"]
+    timestamp = int(datetime.timestamp(datetime.now()))
+    db.child("users").child("users").child(uid).child("cases").child(caseid).child("events").update({timestamp:"case closed"})
+    db.child("cases").child(caseid).update({"status":"case closed"})
+    db.child("cases").child("users").child(uid).child("cases").child(caseid).update({"epoch":timestamp})
+    all =True
+    return HttpResponse(json.dumps(all),content_type="json/application")
