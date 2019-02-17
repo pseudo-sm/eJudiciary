@@ -19,7 +19,62 @@
     
 </head>
 <body style="background-color: whitesmoke">
-<header>
+<style>
+    .box {
+        padding: 15%;
+        padding-left: 30%;
+        color: white;
+        font-size: 50px;
+        align-content: center;
+        justify-content: center;
+        vertical-align:middle;
+        opacity: 0.95;
+        transition: .3s color, .3s border, .3s transform, .3s opacity;
+    }
+
+    [class*="loader-"] {
+        display: inline-block;
+        width: 2em;
+        height: 2em;
+        align-content: center;
+        justify-content: center;
+        color: inherit;
+        vertical-align: middle;
+        pointer-events: none;
+    }
+
+    #load {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        z-index: 9999;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        justify-content: center;
+        background-color: #c21616;
+    }
+
+
+</style>
+           <div class="box" id="load">
+               <div class="loader-10" style="align-items: center"><img src="../static/images/law.gif" style="width: 500px;background-color: darkred;border: none;border-radius: 500px;opacity: 0.8"><br/><span style="position: absolute;margin-left: 13%;font-size: 30px;font-family: cursive"><center>Loading...</center></span></div>
+            </div>
+        <header id="cont">
+        <script>
+                document.onreadystatechange = function() {
+                    var state = document.readyState
+                    if (state == 'interactive') {
+                        document.getElementById('cont').style.visibility = "hidden";
+                    } else if (state == 'complete') {
+                        setTimeout(function() {
+                            document.getElementById('interactive');
+                            document.getElementById('load').style.visibility = "hidden";
+                            document.getElementById('cont').style.visibility = "visible";
+                        }, 1000);
+                    }
+                }
+        </script>
             <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #C21616;color: white">
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon" style="color: white"></span>
@@ -45,7 +100,7 @@
                             <a class="nav-link" href="#" style="color: white"><i class="fas fa-map-marker-alt"></i>&nbsp; Khurdha,Odisha</a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="{% url 'logout' %}" style="color: white" >Log In</a>
+                            <a class="nav-link" href="{% url 'logout' %}" style="color: white" >Log Out</a>
                         </li>
                     </ul>
                 </form>
@@ -72,7 +127,7 @@
                     <img src="../static/images/backgrounds-gradient-red-red-background-844915-1920x1080.png" style="width: 100%;height: 100px;object-fit: fill;object-position: center">
                 </div>
                 <div style="width: 100%;height: 50px;padding: 10px;background-color: #c21616;color: white;border: solid 0.5px grey;cursor: pointer" data-target="">
-                    <center>View</center>
+                    <center>{{case_nos}}</center>
                 </div>
             </div>
             
@@ -174,6 +229,11 @@
                   </div>
                   <div class="modal-body extend">
                     <input type="text" class="charge" placeholder="IPC Section">
+                      <select class="court form-control">
+                          <option>Court 1</option>
+                          <option>Court 2</option>
+                          <option>Court 3</option>
+                      </select>
                     <button type="button" class="btn btn-secondary" id="addmore" style="float: right">Add More</button>
                   </div>
 
@@ -196,11 +256,13 @@
                     $('.charge').each(function() {
                         penal.push($(this).val());
                     });
-                    console.log(penal);
+                    var court = $(this).parent().parent().children('.extend').children('.court').val();
+                    console.log(court);
                     $.ajax({
                        url: '/chargesheet/',
                        data: {
                           'penal':penal,
+                          'court':court,
                           'cid':cid
                         },
                         dataType: 'json',
