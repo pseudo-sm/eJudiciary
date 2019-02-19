@@ -14,6 +14,9 @@ The ideas was to automate the ccomplete cycle from filing an FIR to Closing of t
 Time taken by each entity in the system was taken into record to find out which body causes delay in what type of cases. A Multilinear Regression model was used to generate a credit score for individuals.
 Also text similarity was used to show cases with similar descriptions so that it becomes easy for the authorities to take decisions quickly by taking reference. Cosine Similarity was used here. 
 
+<b>The Github link to the Android Application is here : </b>
+https://github.com/Mr-victus/Ejudiciary
+
 Although the project was not production ready we stood 2nd in the competition.
 
 </pre>
