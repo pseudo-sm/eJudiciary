@@ -77,12 +77,12 @@ def find_accuracy(dataset_name = 'lawers200.csv', model_name = 'model200.pickle'
 
 
 config = {
-    'apiKey': "AIzaSyBQtKDMBy_zKICw9pSHcc4ypSn9w4kc_JA",
-    'authDomain': "ejudiciary-66067.firebaseapp.com",
-    'databaseURL': "https://ejudiciary-66067.firebaseio.com",
-    'projectId': "ejudiciary-66067",
+    'apiKey': firebase-api-key,
+    'authDomain': "your-app.firebaseapp.com",
+    'databaseURL': "https://your-app.firebaseio.com",
+    'projectId': "your-app-id",
     'storageBucket': "",
-    'messagingSenderId': "783290318894"
+    'messagingSenderId': "sender-id"
   };
 firebase = pyrebase.initialize_app(config)
 1
